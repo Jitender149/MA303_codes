@@ -1,0 +1,28 @@
+% Lab 2
+% linprog solve minimisation problem only
+% so convert accordingly
+% a)
+% taking input
+A = input("Enter the matrix A");
+b = input("Enter the matrix b");
+c = input("Enter the matrix C");
+% c to be input as column vector 
+
+[X,z] = linprog(c,A,b);
+disp(X);
+disp(z); % see how to adjust -ve sign
+[row,col] = size(b);
+hold on;
+for i = 1:row
+    for x = 0 :1: 100
+        y = (-1*A(i,1)*x + b(i,1))./A(i,2);
+        plot(x,y);
+        hold on
+    end
+end
+xlim([0 10]); % Set limits for x-axis
+ylim([0 10]);
+
+
+% how to plot the region --- shaded region to be given by the matlab
+% what if there is lower bound condition on the decision problem
